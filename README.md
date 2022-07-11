@@ -33,7 +33,7 @@ Debian Base
 ## 2. Install Python 3.8 on LXPlus
 The best is to create a virtual environment to store python 3.8.
 
-```
+```sh
 mkdir $HOME/dbs3env/
 cd $HOME/dbs3env/
 wget https://www.python.org/ftp/python/3.8.2/Python-3.8.2.tgz
@@ -48,39 +48,49 @@ export PYTHONPATH=$HOME/dbs3env/Python-3.8.2
 
 ### 2.1 PIP
 Install pip 21.2.2 or higher:
-```
+```sh
 export PATH=$HOME/dbs3env/bin:$PATH
 pip3 install pip==21.2.2
 ```
 Check that Python3.8 and PIP 21.2.2+ are installed
-```
+```sh
 python --version
 pip --version
 ```
 Then export the following paths
-```
+```sh
 export PATH=$HOME/dbs3env/Python-3.8.2/:$HOME/.local/bin:$PATH
 export PYTHONPATH=$HOME/dbs3env/Python-3.8.2/:$PYTHONPATH
 export LD_LIBRARY_PATH="$(python -c 'import site; print(site.getsitepackages()[0])')":$LD_LIBRARY_PATH
 ```
 ### 2.2 pycurl
 Use pip to install pycurl 7.43.0.6
-```
+```sh
 export PYCURL_SSL_LIBRARY=nss
 pip install --compile --install-option="--with-nss" --no-cache-dir pycurl==7.43.0.6
 ```
 ### 2.3 dbs3-client
 Use pip one more time:
-```
+```sh
 export PYCURL_SSL_LIBRARY=nss
 pip install --compile --install-option="--with-nss" --no-cache-dir pycurl==7.43.0.6
 ```
 
-## 3. Script to launch the working environment
+## 3 Testing
 
-Then, create in your home you can place the DBS_Environment.sh script to launch the python3.8 environment and do the VOMS authentication.
-Here I have included the previously.
+Lets use the following LFN as example:
+
 ```
+Test_LFN='/store/mc/RunIISummer20UL16RECOAPV/HscalarToTTTo1L1Nu2J_m365_w36p5_res_TuneCP5_13TeV-madgraph_pythia8/AODSIM/106X_mcRun2_asymptotic_preVFP_v8-v3/100000/FC9DF411-A5E7-AE48-AE3E-1C82A876E276.root'
+```
+
+TO COMPLETE LATER
+
+## 4 Script to launch the working environment
+
+I have created a small script to load all the necessary paths to launch the dbs3-client on the python3.8 environment and do the VOMS authentication.
+
+```sh
 # DBS_Environment.sh
 
 cwd=$PWD
@@ -106,11 +116,7 @@ cd $cwd
 export PS1="(PYTHON38dbs3) [\u@\h \W]\$ "
 ```
 
-## Testing
 
-```
-Test_lfn = '/store/mc/RunIISummer20UL16RECOAPV/HscalarToTTTo1L1Nu2J_m365_w36p5_res_TuneCP5_13TeV-madgraph_pythia8/AODSIM/106X_mcRun2_asymptotic_preVFP_v8-v3/100000/FC9DF411-A5E7-AE48-AE3E-1C82A876E276.root'
-```
 
 
 ## References
