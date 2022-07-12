@@ -76,17 +76,8 @@ export PYCURL_SSL_LIBRARY=nss
 pip install --compile --install-option="--with-nss" --no-cache-dir pycurl==7.43.0.6
 ```
 
-## 3 Testing
 
-Lets use the following LFN as example:
-
-```
-Test_LFN='/store/mc/RunIISummer20UL16RECOAPV/HscalarToTTTo1L1Nu2J_m365_w36p5_res_TuneCP5_13TeV-madgraph_pythia8/AODSIM/106X_mcRun2_asymptotic_preVFP_v8-v3/100000/FC9DF411-A5E7-AE48-AE3E-1C82A876E276.root'
-```
-
-TO COMPLETE LATER
-
-## 4 Script to launch the working environment
+## 3 Script to launch the working environment
 
 I have created a small script to load all the necessary paths to launch the dbs3-client on the python3.8 environment and do the VOMS authentication.
 
@@ -117,6 +108,39 @@ export PS1="(PYTHON38dbs3) [\u@\h \W]\$ "
 ```
 
 
+## 4 Test / Usage
+
+I have saved the `scripts/` folder inside the `dbs3env/` folder. By default it uses the `TEST_url` in the `urls.py` file, for production just use `url`.
+
+
+Lets use the following LFN as example:
+```
+(PYTHON38dbs3) [fgomezco@lxplus7104 scripts]$ Test_LFN='/store/mc/RunIISummer20UL16RECOAPV/HscalarToTTTo1L1Nu2J_m365_w36p5_res_TuneCP5_13TeV-madgraph_pythia8/AODSIM/106X_mcRun2_asymptotic_preVFP_v8-v3/100000/FC9DF411-A5E7-AE48-AE3E-1C82A876E276.root'
+```
+### 4.1 Get File Info
+Once the dbs3env is active, you should be able to get the file information with `dbs2go_DBS3_get_file_info.py`:
+```
+(PYTHON38dbs3) [fgomezco@lxplus7104 scripts]$ python dbs2go_DBS3_get_file_info.py -f $Test_LFN
+{'adler32': '9e88cfb8', 'auto_cross_section': 0, 'block_id': 25404425, 'block_name': '/HscalarToTTTo1L1Nu2J_m365_w36p5_res_TuneCP5_13TeV-madgraph_pythia8/RunIISummer20UL16RECOAPV-106X_mcRun2_asymptotic_preVFP_v8-v3/AODSIM#7d0009d6-0959-4b86-bdbf-2612fe604aa4', 'branch_hash_id': None, 'check_sum': '292542651', 'create_by': None, 'creation_date': None, 'dataset': '/HscalarToTTTo1L1Nu2J_m365_w36p5_res_TuneCP5_13TeV-madgraph_pythia8/RunIISummer20UL16RECOAPV-106X_mcRun2_asymptotic_preVFP_v8-v3/AODSIM', 'dataset_id': 14273627, 'event_count': 4000, 'file_id': 734480277, 'file_size': 1215429328, 'file_type': 'EDM', 'file_type_id': 1, 'is_file_valid': 1, 'last_modification_date': 1634669357, 'last_modified_by': 'wmagent@vocms0280.cern.ch', 'logical_file_name': '/store/mc/RunIISummer20UL16RECOAPV/HscalarToTTTo1L1Nu2J_m365_w36p5_res_TuneCP5_13TeV-madgraph_pythia8/AODSIM/106X_mcRun2_asymptotic_preVFP_v8-v3/100000/FC9DF411-A5E7-AE48-AE3E-1C82A876E276.root', 'md5': None}
+(PYTHON38dbs3) [fgomezco@lxplus7104 scripts]$ 
+```
+### 4.2 Change DBS file status to INVALID
+Use `dbs2go_DBS3_file_invalidation.py`:
+```
+(PYTHON38dbs3) [fgomezco@lxplus7104 scripts]$ python dbs2go_DBS3_file_invalidation.py -f $Test_LFN
+[]
+(PYTHON38dbs3) [fgomezco@lxplus7104 scripts]$ 
+```
+This is the output for a good invalidation. If we have a different response, the script will raise an exception.
+
+### 4.3 Change DBS file status to VALID
+Use `dbs2go_DBS3_file_revalidation.py`:
+```
+(PYTHON38dbs3) [fgomezco@lxplus7104 scripts]$ python dbs2go_DBS3_file_revalidation.py -f $Test_LFN
+[]
+(PYTHON38dbs3) [fgomezco@lxplus7104 scripts]$ 
+```
+This is the output for a good validation or revalidation. If we have a different response, the script will raise an exception.
 
 
 ## References
