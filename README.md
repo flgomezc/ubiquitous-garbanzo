@@ -146,4 +146,5 @@ This is the output for a good validation or revalidation. If we have a different
 ## References
 
 [1] https://github.com/CMSCompOps/TransferTeam/blob/master/dbs/DBS3SetFileStatus.py
+
 [2] https://github.com/dmwm/DBSClient
