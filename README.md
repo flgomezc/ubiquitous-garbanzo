@@ -142,9 +142,35 @@ Use `dbs2go_DBS3_file_revalidation.py`:
 ```
 This is the output for a good validation or revalidation. If we have a different response, the script will raise an exception.
 
+## About the API
+
+The python client (python2go) code is here [3]. It is fully documented.
+
+```
+    @split_calls
+    def listFiles(self, **kwargs):
+    ...
+        validParameters = ['dataset', 'block_name', 'logical_file_name',
+                          'release_version', 'pset_hash', 'app_name',
+                          'output_module_label', 'run_num',
+                          'origin_site_name', 'lumi_list', 'detail', 'validFileOnly', 'sumOverLumi']
+    ...
+    
+    @split_calls
+    def updateFileStatus(self, **kwargs):
+    ...
+        validParameters = ['logical_file_name', 'is_file_valid', 'lost', 'dataset']
+
+        requiredParameters = {'forced': ['is_file_valid'], 'multiple': ['logical_file_name', 'dataset']}
+    ...    
+
+```
+
 
 ## References
 
 [1] https://github.com/CMSCompOps/TransferTeam/blob/master/dbs/DBS3SetFileStatus.py
 
 [2] https://github.com/dmwm/DBSClient
+
+[3] https://github.com/dmwm/DBSClient/blob/main/src/python/dbs/apis/dbsClient.py
