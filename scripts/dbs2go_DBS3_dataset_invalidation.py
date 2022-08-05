@@ -9,7 +9,7 @@ from dbs.apis.dbsClient import DbsApi
 from dbs.exceptions.dbsClientException import dbsClientException
 
 
-dbsApi = DbsApi(url=url) # 'TEST_URL' or just 'url'
+dbsApi = DbsApi(url=TEST_url) # 'TEST_URL' or just 'url'
 
 FILEVALID = 1
 FILEINVALID = 0
