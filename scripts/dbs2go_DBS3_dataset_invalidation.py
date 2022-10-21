@@ -1,4 +1,5 @@
-File Edit Options Buffers Tools Python Help                                                                                                 
+# This script cannot recognize if a dataset exists or not.
+# Python 3.8.2
 from optparse import OptionParser                                                                                                           
 import logging                                                                                                                              
 import os                                                                                                                                   
