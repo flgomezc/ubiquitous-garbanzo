@@ -20,7 +20,7 @@ As user of [1], you don't receive any confirmation/error message.
 # Solution
 
 ## The new DBS3-Client
-I followed the [BDS3-CLIENT](https://github.com/dmwm/DBSClient)[2] documentation to install: 
+I followed the [DBS3-CLIENT](https://github.com/dmwm/DBSClient)[2] documentation to install: 
 
 ## 1. Install Libcurl
 
