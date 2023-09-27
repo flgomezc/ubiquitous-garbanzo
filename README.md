@@ -142,6 +142,10 @@ Use `dbs2go_DBS3_file_revalidation.py`:
 ```
 This is the output for a good validation or revalidation. If we have a different response, the script will raise an exception.
 
+## 5 Usage
+
+For production, change the url from `TEST_url` to `url`.
+
 ## About the API
 
 The python client (python2go) code is here [3]. It is fully documented.
